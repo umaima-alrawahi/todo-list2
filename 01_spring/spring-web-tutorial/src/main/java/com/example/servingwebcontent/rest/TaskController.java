@@ -35,4 +35,11 @@ public class TaskController {
     public void createTask(@RequestBody Task task) {
         taskMap.put(task.getId(), task);
     }
+
+    @DeleteMapping("/tasks/{id}")
+    //first try
+    //public Boolean deleteTask(@PathVariable Integer id){ taskMap.remove(id);}
+    //secound try
+    public void deleteTask(@PathVariable Integer id){ taskMap.remove(id);}
+
 }

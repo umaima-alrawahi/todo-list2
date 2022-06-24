@@ -38,7 +38,7 @@ public class TaskController {
 
     @DeleteMapping("/tasks/{id}")
     //first try
-    //public Boolean deleteTask(@PathVariable Integer id){ taskMap.remove(id);}
+    //public Boolean deleteTask(@PathVariable Integer id){ return true;}
     //secound try
     public void deleteTask(@PathVariable Integer id){ taskMap.remove(id);}
 

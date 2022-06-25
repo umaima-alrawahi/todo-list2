@@ -21,7 +21,7 @@ public class TaskController {
     }
 
     @GetMapping("/tasks")
-    public Collection<Task> getAllProducts() {
+    public Collection<Task> getAllTasks() {
         return taskMap.values();
     }
 
@@ -45,8 +45,22 @@ public class TaskController {
     //mark as done, just fetch data, not work as backend
 //    @RequestMapping ("/tasks/{id}")
 //    public Task markTask(@PathVariable Integer id){ return taskMap.get(id);}
-    @RequestMapping ("/tasks/{id}")
-    public Boolean markTask(@PathVariable Integer id){ return true;}
+    @PutMapping ("/tasks/{id}")
+    public Task markTask(@PathVariable Integer id) {
+        taskMap.get(id).setIsDone(true);
+        return taskMap.get(id);
+    }
+    //public void markTask(@PathVariable Integer id){ taskMap.get(id).setIsDone(true);}
+//    public Task markTask(@PathVariable Integer id){
+//
+//        Task thisTask = getTaskById(id);
+//        taskMap.put(id, new Task(id, thisTask.getName(), true));
+//        return thisTask;
+//
+//    }
+
+//    @RequestMapping ("/tasks/{id}")
+//    public Boolean markTask(@PathVariable Integer id){ return true;}
 
 
 

@@ -43,9 +43,10 @@ class App extends React.Component {
         function markTask(id, isDone) {
             if (isDone === false) {
                 //console.log("this isDone")
-                fetch('http://localhost:8080/tasks/'+id, {method: 'POST'})
+                fetch('http://localhost:8080/tasks/' + id, { method: 'PUT' })
                     .then(response => response.json())
-                    .then((response) => {console.log(response)
+                    .then((response) => {
+                        console.log(response)
                         //this.setState({tasks: response});
                     });
             }

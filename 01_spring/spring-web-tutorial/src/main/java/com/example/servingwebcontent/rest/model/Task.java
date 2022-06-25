@@ -3,7 +3,7 @@ package com.example.servingwebcontent.rest.model;
 public class Task {
     private final int id;
     private final String name;
-    private final Boolean isDone;
+    private Boolean isDone;
 
     public Task(int id, String name, Boolean isDone) {
         this.id = id;
@@ -19,5 +19,8 @@ public class Task {
     }
     public Boolean getIsDone() {
         return isDone;
+    }
+    public Boolean setIsDone(boolean b) {
+        return this.isDone = b;
     }
 }

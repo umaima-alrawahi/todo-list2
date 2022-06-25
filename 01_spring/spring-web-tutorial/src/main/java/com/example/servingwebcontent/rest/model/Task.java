@@ -8,7 +8,7 @@ public class Task {
     public Task(int id, String name, Boolean isDone) {
         this.id = id;
         this.name = name;
-        this.isDone = false;
+        this.isDone = isDone;
     }
 
     public int getId() {

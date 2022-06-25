@@ -22,11 +22,11 @@ class App extends React.Component {
 
         function deleteTask(id) {
             //got Failed to fetch
+            // fetch('http://localhost:8080/tasks/'+id, {method: 'Delete'})
+            //     .then(() => this.setState({status: 'Delete successful'})
+
             fetch('http://localhost:8080/tasks/'+id, {method: 'Delete'})
-                .then(() => this.setState({status: 'Delete successful'})
-
-
-
+                .then((response=> console.log(response))
 
             //works in frountend;
             // fetch('http://localhost:8080/tasks')
@@ -37,24 +37,31 @@ class App extends React.Component {
 
 
                     //console.log(newTasksList)
-
-
                 )
-
-
-
-
-
         }
 
-        function markTask(isDone, id) {
-            //getis
-
-            if(isDone === false){
-                set(isDone) === true;
+        function markTask(id, isDone) {
+            if (isDone === false) {
+                //console.log("this isDone")
+                fetch('http://localhost:8080/tasks/'+id, {method: 'POST'})
+                    .then(response => response.json())
+                    .then((response) => {console.log(response)
+                        //this.setState({tasks: response});
+                    });
             }
+            // fetch('http://localhost:8080/tasks/'+id, {method: 'POST'})
+            //     .then((response=> console.log(response)))
+                // .then((isDone) => this.setState({status: 'true'}))
 
-            console.log(isDone);
+
+
+
+
+            // if(isDone === false){
+            //     set(isDone) === true;
+            // }
+            //
+            // console.log(isDone);
 
         }
 
@@ -62,7 +69,7 @@ class App extends React.Component {
             <div className="app">
                 <div className="tasks">
                     {this.state.tasks.map(task => <div key={task.id}>{task.name}
-                        <button key={task.id} type="button" onClick={ () => markTask(task.isDone, task.id)}> mark as done </button>
+                        <button key={task.id} type="button" onClick={ () => markTask(task.id, task.isDone)}> mark as done </button>
                         <button type="button" onClick={ () => deleteTask(task.id)}> delete
                         </button>
                     </div> )}

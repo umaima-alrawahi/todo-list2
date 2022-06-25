@@ -16,7 +16,7 @@ public class TaskController {
     public TaskController() {
         taskMap = new TreeMap<>();
         taskMap.put(0, new Task(0, "firsttask", false));
-        taskMap.put(1, new Task(1, "secondtask", false));
+        taskMap.put(1, new Task(1, "secondtask", true));
         taskMap.put(2, new Task(2, "thirdtask", false));
     }
 
@@ -41,5 +41,13 @@ public class TaskController {
     //public Boolean deleteTask(@PathVariable Integer id){ return true;}
     //secound try
     public void deleteTask(@PathVariable Integer id){ taskMap.remove(id);}
+
+    //mark as done, just fetch data, not work as backend
+//    @RequestMapping ("/tasks/{id}")
+//    public Task markTask(@PathVariable Integer id){ return taskMap.get(id);}
+    @RequestMapping ("/tasks/{id}")
+    public Boolean markTask(@PathVariable Integer id){ return true;}
+
+
 
 }

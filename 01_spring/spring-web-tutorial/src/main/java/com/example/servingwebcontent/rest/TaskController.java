@@ -50,6 +50,12 @@ public class TaskController {
         taskMap.get(id).setIsDone(true);
         return taskMap.get(id);
     }
+
+    @PostMapping ("/tasks/{id}")
+    public Task updateTask(@PathVariable Integer id) {
+        taskMap.get(id);
+        return taskMap.get(id);
+    }
     //public void markTask(@PathVariable Integer id){ taskMap.get(id).setIsDone(true);}
 //    public Task markTask(@PathVariable Integer id){
 //

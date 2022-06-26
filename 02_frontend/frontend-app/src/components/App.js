@@ -1,14 +1,20 @@
 import React, {useEffect} from "react";
 import CreateTask from "./CreateTask";
+import UpdateTask from "./UpdateTask";
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 
 
 class App extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            tasks: []
+            tasks: [],
+            fixable: false
+
         };
+
         fetch('http://localhost:8080/tasks')
             .then(response => response.json())
             .then((response) => {
@@ -47,8 +53,15 @@ class App extends React.Component {
                     .then(response => response.json())
                     .then((response) => {
                         console.log(response)
+
+
                         //this.setState({tasks: response});
                     });
+
+
+
+
+
             }
             // fetch('http://localhost:8080/tasks/'+id, {method: 'POST'})
             //     .then((response=> console.log(response)))
@@ -66,6 +79,7 @@ class App extends React.Component {
 
         }
 
+
         return (
             <div className="app">
                 <div className="tasks">
@@ -73,9 +87,17 @@ class App extends React.Component {
                         <button key={task.id} type="button" onClick={ () => markTask(task.id, task.isDone)}> mark as done </button>
                         <button type="button" onClick={ () => deleteTask(task.id)}> delete
                         </button>
+                        <button id={task.id} type="button" onClick={(id) => this.setState({ fixable: !this.state.fixable })}
+                        >
+                            Edit task {task.id}
+                        </button>
+
                     </div> )}
                 </div>
                 <CreateTask></CreateTask>
+                {this.state.fixable && <UpdateTask></UpdateTask>}
+
+
             </div>
         );
     }
